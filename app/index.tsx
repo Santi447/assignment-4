@@ -1,5 +1,4 @@
 import { Text, View, } from "react-native";
-import EmployeeForm from "../components/employeeForm";
 import * as Yup from "yup";
 import Formik from "formik";
 
@@ -22,6 +21,8 @@ export default function Index() {
   const initalValues: LoginValues = {email: "", password: ""};
 
   return (
-    <EmployeeForm/>
+    <View>
+
+    </View>
   );
 }
