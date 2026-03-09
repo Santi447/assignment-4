@@ -10,13 +10,31 @@ type employeeFormValues = {
   employeeHireDate:string;
 }
 const employeeFormSchema = Yup.object({
-  
+  employeeId:
+   Yup.string().max(5),
+  email:
+   Yup.string().email(),
+  emplyeeName:
+   Yup.string().max(28),
+  employeeJobTitle:
+   Yup.string().max(50),
+  employeeHireDate:
+   Yup.string().datetime()
+
 })
 
 export default function  EmployeeForm(){
+  const initalValues: employeeFormValues {
+    employeeId
+
+  }
   return(
 
-  <View></View>
+  <Formik
+  initialValues=
+  >
+
+  </Formik>
   );
 }
 
