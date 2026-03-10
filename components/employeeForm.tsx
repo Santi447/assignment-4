@@ -1,5 +1,5 @@
-import Formik from "formik";
-import { View, StyleSheet } from "react-native";
+import {Formik} from "formik";
+import { View, StyleSheet, Text,TextInput } from "react-native";
 import * as Yup from "yup";
   
 type employeeFormValues = {
@@ -23,18 +23,45 @@ const employeeFormSchema = Yup.object({
 
 })
 
-export default function  EmployeeForm(){
-  const initalValues: employeeFormValues {
-    employeeId
+export default function EmployeeForm(){
+  const INITIALVAlUES: employeeFormValues = {
+    employeeId: "",
+    employeeName: "",
+    employeeEmail: "",
+    employeeJobTitle: "",
+    employeeHireDate: ""
 
-  }
+  };
   return(
+  <View>
+    <Formik initialValues={{INITIALVAlUES}} 
+    validationSchema={employeeFormSchema} onSubmit={(values) => {
+      console.log(values);
+    }}>
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+      }) => (
+        <View>
+          <Text>EmployeeId:</Text>
+          <TextInput 
+          value={values.INITIALVAlUES.employeeId}
+          onChangeText={handleChange("employeeId")}
+          onBlur={handleBlur("employeeId")}
+          style={{borderWidth:1,minHeight:30,minWidth:200}}
 
-  <Formik
-  initialValues=
-  >
+          />
 
-  </Formik>
+        </View>
+      )
+      }
+    </Formik>
+  </View>
   );
 }
 
