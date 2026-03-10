@@ -1,5 +1,5 @@
 import {Formik} from "formik";
-import { View, StyleSheet, Text,TextInput, Pressable } from "react-native";
+import { View, StyleSheet, Text,TextInput, Pressable, Button} from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -15,9 +15,9 @@ const employeeFormSchema = Yup.object({
   employeeId:
    Yup.string().max(5).required("employee id is required"),
   email:
-   Yup.string().email(),
+   Yup.string().email().required("email is required"),
   employeeName:
-   Yup.string().max(28),
+   Yup.string().max(28, "employee name must be 28 characters or less").required("employee name is required"),
   employeeJobTitle:
    Yup.string().max(50,"Job title must be 50 characters or less").required("employee job title is required"),
   employeeHireDate:
@@ -40,8 +40,9 @@ export default function EmployeeForm(){
       <Formik
         initialValues={INITIALVAlUES}
         validationSchema={employeeFormSchema}
-        onSubmit={(values) => {
+        onSubmit={(values,{setSubmitting,setStatus}) => {
           console.log(values);
+          const success = employeeFormSchema()
         }}
       >
         {({
@@ -74,6 +75,7 @@ export default function EmployeeForm(){
             <Text style={styles.error}>{errors.email?.toString()} </Text>
             <TextInput
               value={values.email}
+              keyboardType="email-address"
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               style={{ borderWidth: 1, minHeight: 30, minWidth: 200 }}
@@ -106,9 +108,7 @@ export default function EmployeeForm(){
             {showPicker && (
               <DateTimePicker
                 value={
-                  values.employeeHireDate
-                    ? new Date(values.employeeHireDate)
-                    : new Date()
+                  values.employeeHireDate ? new Date(values.employeeHireDate) : new Date()
                 }
                 mode="date"
                 display="default"
@@ -123,8 +123,7 @@ export default function EmployeeForm(){
                 }}
               />
             )}
-
-            {/* {errors?.email && touched?.email && errors.email&&(  <Text style={styles.error}>{errors.email}</Text>)}; */}
+              <Button title="Submit" onPress={() => handleSubmit()} disabled={isSubmitting} />
           </View>
         )}
       </Formik>
