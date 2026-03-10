@@ -1,4 +1,5 @@
 import { Text, View, } from "react-native";
+import {Link} from "expo-router"
 import * as Yup from "yup";
 import Formik from "formik";
 
@@ -22,7 +23,9 @@ export default function Index() {
 
   return (
     <View>
-
+      <Link href={"/employeeFormScreen"}>
+      click me
+      </Link>
     </View>
   );
 }

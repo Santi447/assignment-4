@@ -11,10 +11,10 @@ type employeeFormValues = {
 }
 const employeeFormSchema = Yup.object({
   employeeId:
-   Yup.string().max(5),
+   Yup.string().max(5).required("employee id is required"),
   email:
    Yup.string().email(),
-  emplyeeName:
+  employeeName:
    Yup.string().max(28),
   employeeJobTitle:
    Yup.string().max(50),
@@ -34,7 +34,7 @@ export default function EmployeeForm(){
   };
   return(
   <View>
-    <Formik initialValues={{INITIALVAlUES}} 
+    <Formik initialValues={INITIALVAlUES} 
     validationSchema={employeeFormSchema} onSubmit={(values) => {
       console.log(values);
     }}>
@@ -48,16 +48,26 @@ export default function EmployeeForm(){
         isSubmitting,
       }) => (
         <View>
-          <Text>EmployeeId:</Text>
+          <Text style={styles.error}>{errors.employeeId?.toString()}</Text>
           <TextInput 
-          value={values.INITIALVAlUES.employeeId}
+          value={values.employeeId}
           onChangeText={handleChange("employeeId")}
           onBlur={handleBlur("employeeId")}
           style={{borderWidth:1,minHeight:30,minWidth:200}}
-
+          placeholder="employee id"
           />
-
+          {errors?.employeeId && touched?.employeeId && errors.employeeId};
+          <Text style={styles.error}>{errors.employeeName?.toString()} </Text>
+          <TextInput
+          value={values.employeeName}
+          onChangeText={handleChange("employeeName")}
+          onBlur={handleBlur("employeeName")}
+          style={{borderWidth:1,minHeight:30,minWidth:200}}
+          placeholder="employee name"
+          />
+          {errors?.employeeName && touched?.employeeName && errors.employeeName};
         </View>
+        
       )
       }
     </Formik>
@@ -66,5 +76,12 @@ export default function EmployeeForm(){
 }
 
 const styles = StyleSheet.create({
+  error:{
+    
+    margin: 8,
+    fontSize: 14,
+    color: 'red',
+    fontWeight: 'bold'
+  }
 
 });
