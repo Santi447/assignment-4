@@ -1,4 +1,5 @@
 import { Text, View, } from "react-native";
+import {Link} from "expo-router"
 import * as Yup from "yup";
 import Formik from "formik";
 
@@ -21,15 +22,10 @@ export default function Index() {
   const initalValues: LoginValues = {email: "", password: ""};
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-  
+    <View>
+      <Link href={"/employeeFormScreen"}>
+      click me
+      </Link>
     </View>
   );
 }
