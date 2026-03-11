@@ -47,7 +47,7 @@ export default function EmployeeForm() {
         validationSchema={employeeFormSchema}
         onSubmit={(values, { setSubmitting, setStatus }) => {
           console.log(values);
-          router.push("/successScreen");
+          router.push("/employeeFormSuccessScreen");
         }}
       >
         {({
