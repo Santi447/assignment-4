@@ -1,4 +1,5 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Formik } from "formik";
 import { useState } from "react";
 import { router } from "expo-router";
@@ -60,7 +61,10 @@ export default function EmployeeForm() {
           isSubmitting,
         }) => (
           <View style={styles.innerContainer}>
-            <Text style={styles.label}>Employee ID</Text>
+            <View style={styles.label}>
+              <Text>Employee ID</Text>
+              <Ionicons name="id-card" size={20} color="black" />
+            </View>
             <TextInput
               value={values.employeeId}
               onChangeText={handleChange("employeeId")}
@@ -77,8 +81,10 @@ export default function EmployeeForm() {
             {touched.employeeId && errors.employeeId && (
               <Text style={styles.error}>{errors.employeeId}</Text>
             )}
-
-            <Text style={styles.label}>Employee Name</Text>
+            <View style={styles.label}>
+            <Text >Employee Name</Text>
+            <Ionicons name="person" size={20} color="black" />
+            </View>
             <TextInput
               value={values.employeeName}
               onChangeText={handleChange("employeeName")}
@@ -95,8 +101,10 @@ export default function EmployeeForm() {
             {touched.employeeName && errors.employeeName && (
               <Text style={styles.error}>{errors.employeeName}</Text>
             )}
-
-            <Text style={styles.label}>Email</Text>
+            <View style={styles.label}>
+            <Text >Email</Text>
+            <Ionicons name="mail" size={20} color="black" />
+            </View>
             <TextInput
               value={values.email}
               keyboardType="email-address"
@@ -112,8 +120,10 @@ export default function EmployeeForm() {
             {touched.email && errors.email && (
               <Text style={styles.error}>{errors.email}</Text>
             )}
-
-            <Text style={styles.label}>Job Title</Text>
+            <View style={styles.label}>
+            <Text>Job Title</Text>
+            <Ionicons name="briefcase" size={20} color="black" />
+            </View>
             <TextInput
               value={values.employeeJobTitle}
               onChangeText={handleChange("employeeJobTitle")}
@@ -130,8 +140,10 @@ export default function EmployeeForm() {
             {touched.employeeJobTitle && errors.employeeJobTitle && (
               <Text style={styles.error}>{errors.employeeJobTitle}</Text>
             )}
-
-            <Text style={styles.label}>Hire Date</Text>
+            <View style={styles.label}>
+            <Text >Hire Date</Text>
+            <Ionicons name="calendar" size={20} color="black" />
+            </View>
             <Pressable
               onPress={() => setShowPicker(true)}
               style={styles.hireDatePicker}
@@ -210,6 +222,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     marginTop: 16,
     color: "#222",
+    flexDirection: "row",
+    gap: 8,
   },
   input: {
     borderWidth: 1,
