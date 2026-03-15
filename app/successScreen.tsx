@@ -24,7 +24,7 @@ export default function SuccessScreen() {
 
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => router.replace("/signup")}
+        onPress={() => router.replace("/")}
         activeOpacity={0.85}
       >
         <Text style={styles.btnText}>Sign In Now</Text>
