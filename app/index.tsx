@@ -1,7 +1,7 @@
-import { Text, View, } from "react-native";
-import {Link} from "expo-router"
 import * as Yup from "yup";
-import Formik from "formik";
+import LoginForm from "../components/loginForm";
+
+
 
 type LoginValues = {
   email : string;
@@ -19,13 +19,5 @@ const loginSchema = Yup.object({
 
 
 export default function Index() {
-  const initalValues: LoginValues = {email: "", password: ""};
-
-  return (
-    <View>
-      <Link href={"/employeeFormScreen"}>
-      click me
-      </Link>
-    </View>
-  );
+  return <LoginForm />;
 }

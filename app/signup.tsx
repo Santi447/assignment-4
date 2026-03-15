@@ -3,15 +3,15 @@ import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import {
-    ActivityIndicator,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import * as Yup from "yup";
 
@@ -279,7 +279,7 @@ export default function SignUpScreen() {
         {/* ── Footer ── */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already have an account? </Text>
-          <TouchableOpacity onPress={() => router.push("/signup")}>
+          <TouchableOpacity onPress={() => router.push("/")}>
             <Text style={styles.footerLink}>Sign In</Text>
           </TouchableOpacity>
         </View>
